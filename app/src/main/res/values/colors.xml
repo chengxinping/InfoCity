@@ -3,4 +3,10 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="tab_select_text_color">#f18f2d</color>
+    <color name="tab_bg_color">#ffffff</color>
+    <color name="tab_indicator">#2196f3</color>
+    <color name="refresh_layout_bg_color">#dfdcdc</color>
+    <color name="refresh_color">#c2e447</color>
+    <color name="item_news_date_color">#b7b5b5</color>
 </resources>

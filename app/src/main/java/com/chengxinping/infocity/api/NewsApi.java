@@ -4,9 +4,9 @@ import com.chengxinping.infocity.bean.NewsBean;
 
 import java.util.Map;
 
+import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.QueryMap;
-import rx.Observable;
 
 /**
  * Created by 平瓶平瓶子 on 2017/3/3.

@@ -3,12 +3,14 @@ package com.chengxinping.infocity.ui.base;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+
+import com.chengxinping.infocity.R;
 
 import butterknife.ButterKnife;
 
@@ -16,28 +18,21 @@ import butterknife.ButterKnife;
  * Created by 平瓶平瓶子 on 2017/3/3.
  */
 
-public abstract class BaseActivity<V, T extends BasePresenter<V>> extends AppCompatActivity {
-
-    protected T mPresenter;
-
-
+public abstract class BaseActivity extends AppCompatActivity {
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
-        if (createPresenter() != null) {
-            mPresenter = createPresenter();
-            mPresenter.attachView(((V) this));
-        }
-        setContentView(provideContentViewId());
-        initStatusBar();
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(getContentViewId());
         ButterKnife.bind(this);
+        initStatusBar();
+        initView();
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mPresenter.detachView();
+    protected void setToolBarTitle(Toolbar toolbar, String title) {
+        toolbar.setTitle(title);
     }
+
+    protected abstract void initView();
 
     private void initStatusBar() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {//4.4 全透明状态栏
@@ -53,8 +48,11 @@ public abstract class BaseActivity<V, T extends BasePresenter<V>> extends AppCom
         }
     }
 
-    protected abstract int provideContentViewId();
+    protected abstract int getContentViewId();
 
-    protected abstract T createPresenter();
-
+    protected void setFragment(BaseFragment fragment) {
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.content_main,fragment);
+        ft.commit();
+    }
 }

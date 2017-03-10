@@ -1,8 +1,9 @@
 package com.chengxinping.infocity.ui.base;
 
-import android.app.Fragment;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import butterknife.ButterKnife;
 
 public abstract class BaseFragment<V, T extends BasePresenter<V>> extends Fragment {
     protected T mPresenter;
+    protected Context mContext;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -28,9 +30,19 @@ public abstract class BaseFragment<V, T extends BasePresenter<V>> extends Fragme
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(createViewLayoutId(), container, false);
         ButterKnife.bind(this, rootView);
-        initView(rootView);
-
         return rootView;
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mContext = context;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        initView(view);
     }
 
     @Override

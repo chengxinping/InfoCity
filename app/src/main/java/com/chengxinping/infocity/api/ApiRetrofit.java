@@ -22,10 +22,16 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiRetrofit {
     public static final String NEWS_BASE_URL = "http://v.juhe.cn/";
+    public static final String Tools_BASE_URL = "https://route.showapi.com/";
     public NewsApi NewsApiService;
+    private ToolsApi ToolsApiService;
 
     public NewsApi getNewsApiService() {
         return NewsApiService;
+    }
+
+    public ToolsApi getToolsApiService() {
+        return ToolsApiService;
     }
 
     public ApiRetrofit() {
@@ -46,6 +52,13 @@ public class ApiRetrofit {
                 .build();
 
         NewsApiService = retrofit_news.create(NewsApi.class);
+        Retrofit retrofit_tools = new Retrofit.Builder()
+                .baseUrl(Tools_BASE_URL)
+                .client(client)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .build();
+        ToolsApiService = retrofit_tools.create(ToolsApi.class);
     }
 
     //cache

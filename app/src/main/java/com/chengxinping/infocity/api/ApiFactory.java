@@ -7,6 +7,7 @@ package com.chengxinping.infocity.api;
 public class ApiFactory {
     protected static final Object monitor = new Object();
     static NewsApi newsApiSingleton = null;
+    static ToolsApi toolsApiSingleton = null;
 
     //单例
     public static NewsApi getNewsApiSingleton() {
@@ -18,4 +19,12 @@ public class ApiFactory {
         }
     }
 
+    public static ToolsApi getToolsApiSingleton() {
+        synchronized (monitor){
+            if (toolsApiSingleton==null){
+                toolsApiSingleton=new ApiRetrofit().getToolsApiService();
+            }
+            return toolsApiSingleton;
+        }
+    }
 }

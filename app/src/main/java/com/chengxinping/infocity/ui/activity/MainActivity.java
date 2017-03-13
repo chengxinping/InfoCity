@@ -1,7 +1,6 @@
 package com.chengxinping.infocity.ui.activity;
 
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -33,6 +32,7 @@ public class MainActivity extends BaseActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+        setFragment(new NewsFragment());
     }
 
 
@@ -57,11 +57,7 @@ public class MainActivity extends BaseActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_news) {
-
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.content_main, new NewsFragment());
-            ft.commit();
-
+            setFragment(new NewsFragment());
         } else if (id == R.id.nav_tools) {
 
         } else if (id == R.id.nav_service) {

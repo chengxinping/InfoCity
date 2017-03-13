@@ -2,6 +2,7 @@ package com.chengxinping.infocity.ui.base;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -49,9 +50,9 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected abstract int getContentViewId();
 
-    protected void setFragment(BaseFragment fragment) {
+    protected void setFragment(Fragment fragment) {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.content_main,fragment);
+        ft.replace(R.id.content_main, fragment);
         ft.commit();
     }
 }

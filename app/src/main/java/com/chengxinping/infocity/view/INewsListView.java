@@ -5,5 +5,6 @@ package com.chengxinping.infocity.view;
  */
 
 public interface INewsListView {
-   
+    abstract void getData();
+    abstract void scrollToTop();
 }

@@ -1,5 +1,7 @@
 package com.chengxinping.infocity.ui.activity;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -69,5 +71,9 @@ public class MainActivity extends BaseActivity
         }
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public static void start(Activity activity) {
+        activity.startActivity(new Intent(activity, MainActivity.class));
     }
 }

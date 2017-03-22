@@ -8,6 +8,7 @@ public class ApiFactory {
     protected static final Object monitor = new Object();
     static NewsApi newsApiSingleton = null;
     static ToolsApi toolsApiSingleton = null;
+    static ServiceApi serviceApiSingleton = null;
 
     //单例
     public static NewsApi getNewsApiSingleton() {
@@ -20,11 +21,20 @@ public class ApiFactory {
     }
 
     public static ToolsApi getToolsApiSingleton() {
-        synchronized (monitor){
-            if (toolsApiSingleton==null){
-                toolsApiSingleton=new ApiRetrofit().getToolsApiService();
+        synchronized (monitor) {
+            if (toolsApiSingleton == null) {
+                toolsApiSingleton = new ApiRetrofit().getToolsApiService();
             }
             return toolsApiSingleton;
         }
+    }
+
+    public static ServiceApi getServiceApiSingleton() {
+        synchronized (monitor) {
+            if (serviceApiSingleton == null) {
+                serviceApiSingleton = new ApiRetrofit().getServiceApiService();
+            }
+        }
+        return serviceApiSingleton;
     }
 }

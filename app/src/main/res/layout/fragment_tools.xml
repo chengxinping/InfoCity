@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:layout_margin="8dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/tab_select_text_color"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="PM2.5"
+            android:textSize="32sp"/>
+
+        <TextView
+            android:layout_margin="8dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/refresh_color"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="今日油价"
+            android:textSize="32sp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:layout_margin="8dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#98FB98"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="快递单号"
+            android:textSize="32sp"/>
+
+        <TextView
+            android:layout_margin="8dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#98F5FF"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="身份证查询"
+            android:textSize="32sp"/>
+    </LinearLayout>
+</LinearLayout>

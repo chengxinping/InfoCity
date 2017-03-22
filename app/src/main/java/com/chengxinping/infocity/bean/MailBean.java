@@ -6,7 +6,7 @@ import java.util.List;
  * Created by 平瓶平瓶子 on 2017/3/13.
  */
 
-public class MainBean {
+public class MailBean {
     /**
      * showapi_res_code : 0
      * showapi_res_error :

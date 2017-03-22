@@ -1,7 +1,7 @@
 package com.chengxinping.infocity.api;
 
 import com.chengxinping.infocity.bean.IDCardBean;
-import com.chengxinping.infocity.bean.MainBean;
+import com.chengxinping.infocity.bean.MailBean;
 import com.chengxinping.infocity.bean.OilBean;
 import com.chengxinping.infocity.bean.PM25Bean;
 
@@ -24,7 +24,7 @@ public interface ToolsApi {
 
     //快递单号查询
     @GET("880-1")
-    Observable<MainBean> getMail(@Query("nu") String nu, @Query("showapi_appid") String showapi_appid, @Query("showapi_sign") String showapi_sign, @Query("showapi_timestamp") String showapi_timestamp);
+    Observable<MailBean> getMail(@Query("nu") String nu, @Query("showapi_appid") String showapi_appid, @Query("showapi_sign") String showapi_sign, @Query("showapi_timestamp") String showapi_timestamp);
 
     //身份证查询
     @GET("25-3")

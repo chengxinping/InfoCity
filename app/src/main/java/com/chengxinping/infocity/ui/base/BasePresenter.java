@@ -2,6 +2,7 @@ package com.chengxinping.infocity.ui.base;
 
 import com.chengxinping.infocity.api.ApiFactory;
 import com.chengxinping.infocity.api.NewsApi;
+import com.chengxinping.infocity.api.ToolsApi;
 
 import java.lang.ref.Reference;
 import java.lang.ref.WeakReference;
@@ -14,6 +15,7 @@ public abstract class BasePresenter<V> {
     protected Reference<V> mViewRef;
 
     public static final NewsApi newsApi = ApiFactory.getNewsApiSingleton();
+    public static final ToolsApi toolsApi = ApiFactory.getToolsApiSingleton();
 
     public void attachView(V view) {
         mViewRef = new WeakReference<V>(view);

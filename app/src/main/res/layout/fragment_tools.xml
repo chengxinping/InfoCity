@@ -2,58 +2,112 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-
               android:orientation="vertical">
 
-    <LinearLayout
+    <include layout="@layout/include_tool_bar"/>
+
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_height="50dp"
+        android:background="@android:color/white"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:paddingLeft="0dp"
+        android:paddingRight="15dp">
 
-        <TextView
-            android:layout_margin="8dp"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@color/tab_select_text_color"
-            android:gravity="center_horizontal|center_vertical"
-            android:text="PM2.5"
-            android:textSize="32sp"/>
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center_vertical|start"
+            android:layout_marginEnd="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginStart="5dp"
+            android:contentDescription="城市"
+            android:scaleType="centerInside"
+            android:src="@drawable/city"/>
 
-        <TextView
-            android:layout_margin="8dp"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@color/refresh_color"
-            android:gravity="center_horizontal|center_vertical"
-            android:text="今日油价"
-            android:textSize="32sp"/>
-    </LinearLayout>
+        <View
+            android:layout_width="2dp"
+            android:layout_height="18dp"
+            android:layout_gravity="center_vertical|start"
+            android:layout_marginLeft="34dp"
+            android:layout_marginStart="34dp"
+            android:background="#EEE"/>
 
-    <LinearLayout
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_gravity="center_vertical|start"
+            android:layout_marginLeft="48dp"
+            android:layout_marginStart="48dp"
+            android:hint="请输入城市">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/edit_city"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:gravity="center_vertical"
+                android:imeOptions="actionNext"
+                android:singleLine="true"
+                android:textColor="#333"
+                android:textSize="14sp"/>
+        </android.support.design.widget.TextInputLayout>
+
+    </FrameLayout>
+
+    <View
+        android:layout_width="34dp"
+        android:layout_height="1dp"
+        android:background="@android:color/white"/>
+
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_height="50dp"
+        android:background="@android:color/white"
+        android:paddingLeft="0dp"
+        android:paddingRight="15dp">
 
-        <TextView
-            android:layout_margin="8dp"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="#98FB98"
-            android:gravity="center_horizontal|center_vertical"
-            android:text="快递单号"
-            android:textSize="32sp"/>
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center_vertical|start"
+            android:layout_marginEnd="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginStart="5dp"
+            android:contentDescription="线路"
+            android:scaleType="centerInside"
+            android:src="@drawable/bus"/>
 
-        <TextView
-            android:layout_margin="8dp"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="#98F5FF"
-            android:gravity="center_horizontal|center_vertical"
-            android:text="身份证查询"
-            android:textSize="32sp"/>
-    </LinearLayout>
+        <View
+            android:layout_width="1dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center_vertical|start"
+            android:layout_marginLeft="34dp"
+            android:layout_marginStart="34dp"
+            android:background="#EEE"/>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_gravity="center_vertical|start"
+            android:layout_marginLeft="48dp"
+            android:layout_marginStart="48dp"
+            android:gravity="center_vertical"
+            android:hint="请输入公交线路">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/edit_bus"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:gravity="center_vertical"
+                android:singleLine="true"
+                android:textColor="#333"
+                android:textSize="14sp"/>
+        </android.support.design.widget.TextInputLayout>
+    </FrameLayout>
+
 </LinearLayout>

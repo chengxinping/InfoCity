@@ -28,6 +28,20 @@
     </RelativeLayout>
 
     <TextView
+        android:paddingLeft="2dp"
+        android:paddingTop="2dp"
+        android:id="@+id/tv_bus_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1"/>
+
+    <TextView
+        android:paddingTop="2dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=".    "/>
+
+    <TextView
         android:paddingTop="2dp"
         android:id="@+id/tv_bus_line"
         android:layout_width="wrap_content"

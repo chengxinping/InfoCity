@@ -2,12 +2,14 @@ package com.chengxinping.infocity.ui.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.chengxinping.infocity.R;
 import com.chengxinping.infocity.ui.base.BaseActivity;
@@ -25,7 +27,8 @@ public class MainActivity extends BaseActivity
     public Toolbar toolbar;
     @BindView(R.id.nav_view)
     NavigationView navigationView;
-
+    @BindView(R.id.fab)
+    FloatingActionButton fab;
 
     @Override
     protected void initView() {
@@ -76,5 +79,21 @@ public class MainActivity extends BaseActivity
 
     public static void start(Activity activity) {
         activity.startActivity(new Intent(activity, MainActivity.class));
+    }
+
+    public void setFabVisibility(boolean tag) {
+        if (tag) {
+            fab.setVisibility(View.VISIBLE);
+        } else {
+            fab.setVisibility(View.GONE);
+        }
+    }
+
+    public void setFabImg(int res) {
+        fab.setImageResource(res);
+    }
+
+    public void setFabOnClickListener(View.OnClickListener listener) {
+        fab.setOnClickListener(listener);
     }
 }

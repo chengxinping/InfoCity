@@ -33,6 +33,7 @@ public class BusLineAdapter extends RecyclerView.Adapter<BusLineAdapter.ViewHold
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.mTvBusLine.setText(mData.get(position).toString());
+        holder.mTvBusNumber.setText(position + 1 + "");
         if (position == mData.size() - 1) {
             holder.mLlLine.setVisibility(View.INVISIBLE);
         }
@@ -46,11 +47,13 @@ public class BusLineAdapter extends RecyclerView.Adapter<BusLineAdapter.ViewHold
     class ViewHolder extends RecyclerView.ViewHolder {
         TextView mTvBusLine;
         LinearLayout mLlLine;
+        TextView mTvBusNumber;
 
         public ViewHolder(View itemView) {
             super(itemView);
             mTvBusLine = (TextView) itemView.findViewById(R.id.tv_bus_line);
             mLlLine = (LinearLayout) itemView.findViewById(R.id.ll_line);
+            mTvBusNumber = (TextView) itemView.findViewById(R.id.tv_bus_number);
         }
     }
 }

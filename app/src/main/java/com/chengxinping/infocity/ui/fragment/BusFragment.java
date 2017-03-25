@@ -21,6 +21,7 @@ import com.chengxinping.infocity.view.IBusView;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -50,6 +51,7 @@ public class BusFragment extends BaseFragment<IBusView, BusPresenter> implements
     RecyclerView mBusLine;
 
     String mCity, mBus;
+    private List<String> mData;
 
     @Override
     protected void initView(View rootView) {
@@ -57,6 +59,8 @@ public class BusFragment extends BaseFragment<IBusView, BusPresenter> implements
         ((MainActivity) getActivity()).toolbar.setTitle("公交查询");
         hideLoading();
         mBusLine.setLayoutManager(new LinearLayoutManager(mContext));
+        ((MainActivity) getActivity()).setFabImg(R.drawable.change);
+        ((MainActivity) getActivity()).setFabVisibility(false);
     }
 
     @Override
@@ -83,6 +87,7 @@ public class BusFragment extends BaseFragment<IBusView, BusPresenter> implements
     public void showError() {
         mBusLine.setVisibility(View.GONE);
         mIvError.setVisibility(View.VISIBLE);
+        ((MainActivity) getActivity()).setFabVisibility(false);
     }
 
     @Override
@@ -130,11 +135,19 @@ public class BusFragment extends BaseFragment<IBusView, BusPresenter> implements
                     } else {
                         String temp = value.getShowapi_res_body().getRetList().get(0).getStats() + ";";
                         String[] str = temp.split(";");
-                        List<String> mData = new ArrayList<String>();
+                        mData = new ArrayList<String>();
                         for (String a : str) {
                             mData.add(a);
                         }
                         mBusLine.setAdapter(new BusLineAdapter(mContext, mData));
+                        ((MainActivity) getActivity()).setFabVisibility(true);
+                        ((MainActivity) getActivity()).setFabOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Collections.reverse(mData);
+                                mBusLine.getAdapter().notifyDataSetChanged();
+                            }
+                        });
                     }
                 }
 
@@ -156,6 +169,7 @@ public class BusFragment extends BaseFragment<IBusView, BusPresenter> implements
     @OnClick(R.id.btn_search)
     public void onClicked(View v) {
         search();
+        ((MainActivity) getActivity()).setFabVisibility(false);
         //隐藏键盘
         InputMethodManager imm = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(v.getWindowToken(), 0);

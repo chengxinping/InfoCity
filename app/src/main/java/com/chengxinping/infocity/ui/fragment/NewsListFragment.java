@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.chengxinping.infocity.R;
 import com.chengxinping.infocity.bean.NewsBean;
 import com.chengxinping.infocity.presenter.NewsListPresenter;
+import com.chengxinping.infocity.ui.activity.MainActivity;
 import com.chengxinping.infocity.ui.adapter.NewsAdapter;
 import com.chengxinping.infocity.ui.base.BaseFragment;
 import com.chengxinping.infocity.ui.widget.SpacesItemDecoration;
@@ -62,6 +63,8 @@ public class NewsListFragment extends BaseFragment<INewsListView, NewsListPresen
         });
         mSpacingInPixels = getResources().getDimensionPixelSize(R.dimen.item_space);
         mRecyclerView.setHasFixedSize(true);
+        ((MainActivity) getActivity()).setFabVisibility(false);
+        ((MainActivity) getActivity()).setFabImg(R.drawable.up);
     }
 
     @Override
@@ -89,6 +92,7 @@ public class NewsListFragment extends BaseFragment<INewsListView, NewsListPresen
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 int lastPosition = -1;
                 //当前状态为停止滑动状态SCROLL_STATE_IDLE时
+                ((MainActivity) getActivity()).setFabVisibility(true);
                 if (newState == RecyclerView.SCROLL_STATE_IDLE) {
                     RecyclerView.LayoutManager layoutManager = recyclerView.getLayoutManager();
                     lastPosition = ((LinearLayoutManager) layoutManager).findLastVisibleItemPosition();
@@ -98,6 +102,7 @@ public class NewsListFragment extends BaseFragment<INewsListView, NewsListPresen
                         Toast.makeText(mContext, "没有更多新闻了", Toast.LENGTH_SHORT).show();
                     }
                 }
+                scrollToTop();
             }
         });
     }
@@ -131,6 +136,14 @@ public class NewsListFragment extends BaseFragment<INewsListView, NewsListPresen
 
     @Override
     public void scrollToTop() {
-
+        ((MainActivity) getActivity()).setFabOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mRecyclerView.smoothScrollToPosition(0);
+            }
+        });
+        if (((LinearLayoutManager) mRecyclerView.getLayoutManager()).findFirstVisibleItemPosition() == 0) {
+            ((MainActivity) getActivity()).setFabVisibility(false);
+        }
     }
 }

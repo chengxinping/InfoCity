@@ -2,6 +2,7 @@ package com.chengxinping.infocity.ui.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -50,6 +51,7 @@ public class ServiceFragment extends Fragment implements Config {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_service, null);
         ButterKnife.bind(this, view);
+        ((MainActivity) getActivity()).setFabVisibility(false);
         return view;
     }
 
@@ -98,6 +100,14 @@ public class ServiceFragment extends Fragment implements Config {
             etMsg.setText("");
 
             requestApi(msg);
+        } else {
+            Snackbar.make(ivSendMsg, "发送消息不能为空", Snackbar.LENGTH_SHORT)
+                    .setAction("确定", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                        }
+                    })
+                    .show();
         }
     }
 
@@ -138,7 +148,7 @@ public class ServiceFragment extends Fragment implements Config {
                 value.setText(value.getText());
                 break;
             default:
-                value.setText(value.getText()+" "+value.getUrl());
+                value.setText(value.getText() + " " + value.getUrl());
         }
         msgList.add(value);
         msgAdapter.notifyDataSetChanged();

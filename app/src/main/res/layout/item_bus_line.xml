@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:paddingRight="10dp">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+
+        <ImageView
+            android:id="@+id/iv_circle"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:paddingTop="2dp"
+            android:src="@drawable/circle"/>
+
+        <LinearLayout
+            android:id="@+id/ll_line"
+            android:layout_width="16dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_circle"
+            android:background="@drawable/linear_style"
+            android:baselineAligned="@id/iv_circle"/>
+    </RelativeLayout>
+
+    <TextView
+        android:paddingTop="2dp"
+        android:id="@+id/tv_bus_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="南湖大道茶山刘"/>
+</LinearLayout>

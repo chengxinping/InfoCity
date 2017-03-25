@@ -8,4 +8,12 @@ public interface IToolsView {
     void showLoading();
 
     void hideLoading();
+
+    void showError();
+
+    void hideError();
+
+    void showSnackBar(String message);
+
+    void search();
 }

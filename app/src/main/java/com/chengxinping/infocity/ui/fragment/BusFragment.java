@@ -13,10 +13,10 @@ import android.widget.ProgressBar;
 
 import com.chengxinping.infocity.R;
 import com.chengxinping.infocity.bean.BusBean;
-import com.chengxinping.infocity.presenter.ToolsPresenter;
+import com.chengxinping.infocity.presenter.BusPresenter;
 import com.chengxinping.infocity.ui.adapter.BusLineAdapter;
 import com.chengxinping.infocity.ui.base.BaseFragment;
-import com.chengxinping.infocity.view.IToolsView;
+import com.chengxinping.infocity.view.IBusView;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -32,7 +32,7 @@ import io.reactivex.disposables.Disposable;
  * Created by 平瓶平瓶子 on 2017/3/15.
  */
 
-public class ToolsFragment extends BaseFragment<IToolsView, ToolsPresenter> implements IToolsView {
+public class BusFragment extends BaseFragment<IBusView, BusPresenter> implements IBusView {
 
 
     @BindView(R.id.edit_city)
@@ -59,12 +59,12 @@ public class ToolsFragment extends BaseFragment<IToolsView, ToolsPresenter> impl
 
     @Override
     protected int createViewLayoutId() {
-        return R.layout.fragment_tools;
+        return R.layout.fragment_bus;
     }
 
     @Override
-    protected ToolsPresenter createPresenter() {
-        return new ToolsPresenter(mContext);
+    protected BusPresenter createPresenter() {
+        return new BusPresenter(mContext);
     }
 
     @Override

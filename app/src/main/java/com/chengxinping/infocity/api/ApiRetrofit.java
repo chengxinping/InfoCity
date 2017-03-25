@@ -22,11 +22,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiRetrofit {
     public static final String NEWS_BASE_URL = "http://v.juhe.cn/";
-    public static final String Tools_BASE_URL = "https://route.showapi.com/";
+    public static final String Bus_BASE_URL = "https://route.showapi.com/";
     public static final String SERVICE_URL = "http://www.tuling123.com/openapi/";
 
     public NewsApi NewsApiService;
-    public ToolsApi ToolsApiService;
+    public BusApi BusApiService;
     public ServiceApi ServiceApiService;
 
     public ServiceApi getServiceApiService() {
@@ -37,8 +37,8 @@ public class ApiRetrofit {
         return NewsApiService;
     }
 
-    public ToolsApi getToolsApiService() {
-        return ToolsApiService;
+    public BusApi getBusApiService() {
+        return BusApiService;
     }
 
     public ApiRetrofit() {
@@ -59,13 +59,13 @@ public class ApiRetrofit {
                 .build();
 
         NewsApiService = retrofit_news.create(NewsApi.class);
-        Retrofit retrofit_tools = new Retrofit.Builder()
-                .baseUrl(Tools_BASE_URL)
+        Retrofit retrofit_bus = new Retrofit.Builder()
+                .baseUrl(Bus_BASE_URL)
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
-        ToolsApiService = retrofit_tools.create(ToolsApi.class);
+        BusApiService = retrofit_bus.create(BusApi.class);
 
         Retrofit retrofit_service = new Retrofit.Builder()
                 .baseUrl(SERVICE_URL)

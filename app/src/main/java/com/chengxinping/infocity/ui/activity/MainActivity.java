@@ -15,7 +15,7 @@ import com.chengxinping.infocity.R;
 import com.chengxinping.infocity.ui.base.BaseActivity;
 import com.chengxinping.infocity.ui.fragment.NewsFragment;
 import com.chengxinping.infocity.ui.fragment.ServiceFragment;
-import com.chengxinping.infocity.ui.fragment.ToolsFragment;
+import com.chengxinping.infocity.ui.fragment.BusFragment;
 
 import butterknife.BindView;
 
@@ -65,8 +65,8 @@ public class MainActivity extends BaseActivity
 
         if (id == R.id.nav_news) {
             setFragment(new NewsFragment());
-        } else if (id == R.id.nav_tools) {
-            setFragment(new ToolsFragment());
+        } else if (id == R.id.nav_bus) {
+            setFragment(new BusFragment());
         } else if (id == R.id.nav_service) {
             fab.setVisibility(View.GONE);
             setFragment(new ServiceFragment());

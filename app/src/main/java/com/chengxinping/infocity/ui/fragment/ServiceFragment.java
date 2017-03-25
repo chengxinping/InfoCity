@@ -16,6 +16,7 @@ import com.chengxinping.infocity.R;
 import com.chengxinping.infocity.api.ApiFactory;
 import com.chengxinping.infocity.api.ServiceApi;
 import com.chengxinping.infocity.bean.MessageBean;
+import com.chengxinping.infocity.ui.activity.MainActivity;
 import com.chengxinping.infocity.ui.adapter.ChatMessageAdapter;
 import com.chengxinping.infocity.util.Config;
 
@@ -56,6 +57,7 @@ public class ServiceFragment extends Fragment implements Config {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initData();
+        ((MainActivity) getActivity()).toolbar.setTitle("智能客服");
         initListener();
     }
 

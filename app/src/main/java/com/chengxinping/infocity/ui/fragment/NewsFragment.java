@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.chengxinping.infocity.R;
+import com.chengxinping.infocity.ui.activity.MainActivity;
 import com.chengxinping.infocity.ui.adapter.ViewPagerAdapter;
 import com.chengxinping.infocity.util.Config;
 
@@ -31,6 +32,7 @@ public class NewsFragment extends Fragment implements Config {
         mViewPager.setAdapter(viewPagerAdapter);
         mTabLayout.setupWithViewPager(mViewPager);
         mTabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
+        ((MainActivity) getActivity()).toolbar.setTitle("新闻中心");
         return view;
     }
 }

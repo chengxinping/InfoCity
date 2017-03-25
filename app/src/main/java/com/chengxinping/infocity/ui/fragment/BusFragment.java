@@ -14,6 +14,7 @@ import android.widget.ProgressBar;
 import com.chengxinping.infocity.R;
 import com.chengxinping.infocity.bean.BusBean;
 import com.chengxinping.infocity.presenter.BusPresenter;
+import com.chengxinping.infocity.ui.activity.MainActivity;
 import com.chengxinping.infocity.ui.adapter.BusLineAdapter;
 import com.chengxinping.infocity.ui.base.BaseFragment;
 import com.chengxinping.infocity.view.IBusView;
@@ -53,6 +54,7 @@ public class BusFragment extends BaseFragment<IBusView, BusPresenter> implements
     @Override
     protected void initView(View rootView) {
         hideError();
+        ((MainActivity) getActivity()).toolbar.setTitle("公交查询");
         hideLoading();
         mBusLine.setLayoutManager(new LinearLayoutManager(mContext));
     }

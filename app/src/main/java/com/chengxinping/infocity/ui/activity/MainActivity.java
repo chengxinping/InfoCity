@@ -2,20 +2,18 @@ package com.chengxinping.infocity.ui.activity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.chengxinping.infocity.R;
 import com.chengxinping.infocity.ui.base.BaseActivity;
+import com.chengxinping.infocity.ui.fragment.BusFragment;
 import com.chengxinping.infocity.ui.fragment.NewsFragment;
 import com.chengxinping.infocity.ui.fragment.ServiceFragment;
-import com.chengxinping.infocity.ui.fragment.BusFragment;
 
 import butterknife.BindView;
 
@@ -27,8 +25,6 @@ public class MainActivity extends BaseActivity
     Toolbar toolbar;
     @BindView(R.id.nav_view)
     NavigationView navigationView;
-    @BindView(R.id.fab)
-    FloatingActionButton fab;
 
 
     @Override
@@ -68,7 +64,6 @@ public class MainActivity extends BaseActivity
         } else if (id == R.id.nav_bus) {
             setFragment(new BusFragment());
         } else if (id == R.id.nav_service) {
-            fab.setVisibility(View.GONE);
             setFragment(new ServiceFragment());
         } else if (id == R.id.nav_share) {
 

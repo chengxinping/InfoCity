@@ -52,14 +52,6 @@ public class MainActivity extends BaseActivity
         return R.layout.activity_main;
     }
 
-    @Override
-    public void onBackPressed() {
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -111,7 +103,9 @@ public class MainActivity extends BaseActivity
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
-            if (System.currentTimeMillis() - exitTime > 2000) {
+            if (drawer.isDrawerOpen(GravityCompat.START)) {
+                drawer.closeDrawer(GravityCompat.START);
+            } else if (System.currentTimeMillis() - exitTime > 2000) {
                 Snackbar snackbar = Snackbar.make(fab, "再按一次退出程序", Snackbar.LENGTH_SHORT);
 //                snackbar.setAction("确定", v -> snackbar.dismiss());
 //                snackbar.setActionTextColor(getResources().getColor(R.color.refresh_color));

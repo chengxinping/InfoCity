@@ -75,6 +75,7 @@ public class BusFragment extends BaseFragment<IBusView, BusPresenter> implements
 
     @Override
     public void showLoading() {
+        mBusLine.setVisibility(View.GONE);
         mProgressBar.setVisibility(View.VISIBLE);
     }
 
@@ -109,6 +110,7 @@ public class BusFragment extends BaseFragment<IBusView, BusPresenter> implements
 
     @Override
     public void search() {
+        mBusLine.setAdapter(new BusLineAdapter(mContext, null));
         mCity = String.valueOf(mEditCity.getText());
         mBus = String.valueOf(mEditBus.getText());
         if (mCity.equals("")) {
@@ -131,7 +133,7 @@ public class BusFragment extends BaseFragment<IBusView, BusPresenter> implements
                 public void onNext(BusBean value) {
                     if (value.getShowapi_res_body().getRetList().size() == 0) {
                         showError();
-                        showSnackBar("城市或公交线路错误！");
+                        showSnackBar("查询线路错误，请重试！");
                     } else {
                         String temp = value.getShowapi_res_body().getRetList().get(0).getStats() + ";";
                         String[] str = temp.split(";");
@@ -154,7 +156,7 @@ public class BusFragment extends BaseFragment<IBusView, BusPresenter> implements
                 @Override
                 public void onError(Throwable e) {
                     showError();
-                    showSnackBar("网络错误！");
+                    showSnackBar("网络错误，请重试！");
                 }
 
                 @Override

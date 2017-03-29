@@ -1,13 +1,12 @@
 package com.chengxinping.infocity.ui.activity;
 
-import android.graphics.Bitmap;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
@@ -57,22 +56,20 @@ public class NewsDetailActivity extends BaseActivity {
         webSettings.setJavaScriptEnabled(true);
         //设置可以访问文件
         webSettings.setAllowFileAccess(true);
-        mNewsWeb.setWebViewClient(new WebViewClient() {
+        mNewsWeb.setWebChromeClient(new WebChromeClient() {
             @Override
-            public void onPageFinished(WebView view, String url) {
-                super.onPageFinished(view, url);
-                mProgressBar.setVisibility(View.GONE);
-            }
-
-            @Override
-            public void onPageStarted(WebView view, String url, Bitmap favicon) {
-                super.onPageStarted(view, url, favicon);
-                mProgressBar.setVisibility(View.VISIBLE);
+            public void onProgressChanged(WebView view, int newProgress) {
+                if (newProgress == 100) {
+                    mProgressBar.setVisibility(View.INVISIBLE);
+                } else {
+                    mProgressBar.setVisibility(View.VISIBLE);
+                    mProgressBar.setProgress(newProgress);
+                }
             }
         });
         mNewsWeb.loadUrl(mUrl);
     }
-    
+
     @Override
     protected int getContentViewId() {
         return R.layout.activity_news_detail;

@@ -3,6 +3,14 @@ apply plugin: 'com.android.application'
 apply plugin: 'me.tatarka.retrolambda'
 
 android {
+    signingConfigs {
+        release {
+            keyAlias 'test'
+            keyPassword 'cxp972649353'
+            storeFile file('E:/KeyStore/apk.jks')
+            storePassword 'cxp972649353'
+        }
+    }
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
     defaultConfig {
@@ -17,6 +25,10 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        debug {
+            signingConfig signingConfigs.release
         }
     }
     //lambda表达式Java8的特性
@@ -24,7 +36,6 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-
     //解决Rxjava编译报错
     packagingOptions {
         exclude 'META-INF/rxjava.properties'

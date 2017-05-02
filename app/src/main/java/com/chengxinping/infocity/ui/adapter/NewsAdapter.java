@@ -48,6 +48,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
                 Intent intent = new Intent(((MainActivity) mContext), NewsDetailActivity.class);
                 intent.putExtra("img", mData.get(position).getThumbnail_pic_s());
                 intent.putExtra("url", mData.get(position).getUrl());
+                intent.putExtra("title",mData.get(position).getTitle());
                 intent.putExtra("type",mData.get(position).getCategory());
                 ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(((MainActivity) mContext), holder.mImg, "transition_animation_news_photos");
                 ((MainActivity) mContext).startActivity(intent,options.toBundle());

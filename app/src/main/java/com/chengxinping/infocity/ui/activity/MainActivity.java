@@ -21,6 +21,8 @@ import com.chengxinping.infocity.ui.fragment.NewsFragment;
 import com.chengxinping.infocity.ui.fragment.ServiceFragment;
 
 import butterknife.BindView;
+import cn.sharesdk.framework.ShareSDK;
+import cn.sharesdk.onekeyshare.OnekeyShare;
 
 public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -69,7 +71,17 @@ public class MainActivity extends BaseActivity
             setFragment(new ServiceFragment());
             drawer.closeDrawer(GravityCompat.START);
         } else if (id == R.id.nav_share) {
-
+            ShareSDK.initSDK(this);
+            OnekeyShare oks = new OnekeyShare();
+            oks.disableSSOWhenAuthorize();
+            oks.setTitle(getString(R.string.app_name));
+            oks.setTitleUrl("http://www.xpcheng.cn");
+            oks.setText("我发现了一个很好玩的APP哟~");
+            oks.setSite(getString(R.string.app_name));
+            oks.setSiteUrl("http://www.xpcheng.cn");
+            oks.setUrl("http://www.xpcheng.cn");
+            oks.setImageUrl("http://www.xpcheng.cn/wp-content/uploads/2017/04/Jay.jpg");
+            oks.show(this);
         } else if (id == R.id.nav_about) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("智慧城市")

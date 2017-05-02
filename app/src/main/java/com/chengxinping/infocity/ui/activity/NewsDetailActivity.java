@@ -15,6 +15,9 @@ import com.chengxinping.infocity.R;
 import com.chengxinping.infocity.ui.base.BaseActivity;
 
 import butterknife.BindView;
+import butterknife.OnClick;
+import cn.sharesdk.framework.ShareSDK;
+import cn.sharesdk.onekeyshare.OnekeyShare;
 
 
 public class NewsDetailActivity extends BaseActivity {
@@ -31,7 +34,7 @@ public class NewsDetailActivity extends BaseActivity {
     @BindView(R.id.fab)
     FloatingActionButton fab;
 
-    String mImg, mUrl, mType;
+    String mImg, mUrl, mType,mTitle;
 
     @Override
 
@@ -39,6 +42,7 @@ public class NewsDetailActivity extends BaseActivity {
         mType = getIntent().getStringExtra("type");
         mImg = getIntent().getStringExtra("img");
         mUrl = getIntent().getStringExtra("url");
+        mTitle = getIntent().getStringExtra("title");
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mToolBarLayout.setTitle(mType);
@@ -73,5 +77,20 @@ public class NewsDetailActivity extends BaseActivity {
     @Override
     protected int getContentViewId() {
         return R.layout.activity_news_detail;
+    }
+
+    @OnClick(R.id.fab)
+    public void onClick(View v) {
+        ShareSDK.initSDK(this);
+        OnekeyShare oks = new OnekeyShare();
+        oks.disableSSOWhenAuthorize();
+        oks.setTitle(mTitle);
+        oks.setTitleUrl(mUrl);
+        oks.setText(mTitle);
+        oks.setSite(getString(R.string.app_name));
+        oks.setSiteUrl(mUrl);
+        oks.setUrl(mUrl);
+        oks.setImageUrl(mImg);
+        oks.show(this);
     }
 }

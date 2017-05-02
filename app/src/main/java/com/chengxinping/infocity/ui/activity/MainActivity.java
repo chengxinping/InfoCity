@@ -75,11 +75,11 @@ public class MainActivity extends BaseActivity
             OnekeyShare oks = new OnekeyShare();
             oks.disableSSOWhenAuthorize();
             oks.setTitle(getString(R.string.app_name));
-            oks.setTitleUrl("http://www.xpcheng.cn");
+            oks.setTitleUrl("https://github.com/chengxinping/InfoCity");
             oks.setText("我发现了一个很好玩的APP哟~");
             oks.setSite(getString(R.string.app_name));
-            oks.setSiteUrl("http://www.xpcheng.cn");
-            oks.setUrl("http://www.xpcheng.cn");
+            oks.setSiteUrl("https://github.com/chengxinping/InfoCity");
+            oks.setUrl("https://github.com/chengxinping/InfoCity");
             oks.setImageUrl("http://www.xpcheng.cn/wp-content/uploads/2017/04/Jay.jpg");
             oks.show(this);
         } else if (id == R.id.nav_about) {
